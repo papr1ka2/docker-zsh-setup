@@ -2,9 +2,9 @@ FROM ubuntu:22.04
 LABEL maintainer="papr1ka2"
 RUN apt -y update
 # install basic packages
-RUN apt -y install zsh wget curl git build-essential
+RUN apt -y install zsh wget curl git build-essential libssl-dev libffi-dev
 # install python3
-RUN apt -y install python3 python3-pip
+RUN apt -y install python3 python3-pip python3-dev
 # install ohmyzsh, zsh themes and plugins
 RUN sh -c "$(wget -O- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 RUN git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
