@@ -3,6 +3,10 @@ LABEL maintainer="papr1ka2"
 RUN apt -y update
 # install basic packages
 RUN apt -y install zsh wget curl git build-essential libssl-dev libffi-dev
+# install tzdata
+RUN sh -c "$(ln -fs /usr/share/zoneinfo/America/New_York /etc/localtime)"
+RUN DEBIAN_FRONTEND=noninteractive apt -y install tzdata
+RUN sh -c "$(dpkg-reconfigure --frontend noninteractive tzdata)"
 # install python3
 RUN apt -y install python3 python3-pip python3-dev
 # install ohmyzsh, zsh themes and plugins
@@ -18,3 +22,9 @@ ENV PATH="/root/.cargo/bin:${PATH}"
 # copy zsh configurations
 COPY .p10k.zsh /root/.p10k.zsh
 COPY .zshrc /root/.zshrc
+# install utils
+RUN cargo install exa
+RUN cargo install bat
+RUN apt -y install ripgrep
+# make zsh default
+RUN chsh -s $(which zsh)

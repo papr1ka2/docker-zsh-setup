@@ -81,6 +81,9 @@ plugins=(
   git
   wd
   fzf
+  docker
+  rust
+  python
   zsh-syntax-highlighting
   zsh-autosuggestions
 )
@@ -115,3 +118,25 @@ source $ZSH/oh-my-zsh.sh
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# rust based command line utilities
+# ls -> exa
+if hash exa 2>/dev/null; then
+    alias ls='exa --icons'
+    alias l='exa -l --icons --all --group-directories-first --git'
+    alias ll='exa -l --icons --all --all --group-directories-first --git'
+    alias lt='exa -T --icons --git-ignore --level=2 --group-directories-first'
+    alias llt='exa -lT --icons --git-ignore --level=2 --group-directories-first'
+    alias lT='exa -T --icons --git-ignore --level=4 --group-directories-first'
+else
+    alias l='ls -lah'
+    alias ll='ls -alF'
+    alias la='ls -A'
+fi
+# cat -> bat
+if hash bat 2>/dev/null; then
+    alias cat='bat'
+fi
+export BAT_THEME="Dracula"
