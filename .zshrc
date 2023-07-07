@@ -89,6 +89,10 @@ plugins=(
   zsh-autosuggestions
 )
 
+ZSH_WEB_SEARCH_ENGINES=(
+    reddit "https://www.reddit.com/search/?q="
+)
+
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
