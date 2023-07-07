@@ -81,6 +81,7 @@ plugins=(
   git
   wd
   fzf
+  web-search
   docker
   rust
   python
