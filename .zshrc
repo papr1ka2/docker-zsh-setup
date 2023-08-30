@@ -145,3 +145,4 @@ if hash bat 2>/dev/null; then
     alias cat='bat'
 fi
 export BAT_THEME="Dracula"
+export PATH="$HOME/.cargo/bin:$PATH"
